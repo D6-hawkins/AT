@@ -14,6 +14,7 @@ using std::unique_ptr;
 class GameObject;
 struct DrawData;
 struct GameData;
+class Sprite;
 class Game
 {
 public:
@@ -37,6 +38,7 @@ private:
 	HWND m_hWND;
 	GameData* m_GD;
 	DrawData* m_DD;
+	Sprite* m_sprite;
 };
 
 
