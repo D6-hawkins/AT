@@ -26,6 +26,12 @@ public:
 	void setRot(float _rot) { m_rot = _rot; };
 	void setScale(Vector2 _scale) { m_scale = _scale; };
 	void setOrigin(Vector2 _origin) { m_origin = _origin; };
+
+	//getters
+	Vector2 GetPos() { return m_pos; };
+	float GetRot() {return m_rot; };
+	Vector2 GetScale() {return m_scale; };
+	Vector2 GetOrigin() {return  m_origin; };
 protected:
 	Vector2 m_pos;
 	float m_rot;

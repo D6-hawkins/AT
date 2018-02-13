@@ -3,6 +3,7 @@
 #include "GameData.h"
 #include <Windows.h>
 #include "Sprite.h"
+#include "PlatformGenerator.h"
 #include <time.h>
 Game::Game(ID3D11Device * _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 {
@@ -38,10 +39,11 @@ Game::Game(ID3D11Device * _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 	UINT width = rc.right - rc.left;
 	UINT height = rc.bottom - rc.top;
 	float AR = (float)width / (float)height;
-
-	m_sprite = new Sprite(L"../AT/gengar.dds", _pd3dDevice);
-	m_sprite->SetPos(200.0f * Vector2::One);
-	m_gameObjects.push_back(m_sprite);
+	platGen = new PlatformGenerator(L"../AT/platform.dds", 10, _pd3dDevice);
+	m_gameObjects.push_back(platGen);
+	//m_sprite = new Sprite(L"../AT/platform.dds", _pd3dDevice);
+	//m_sprite->SetPos(200.0f * Vector2::One);
+	//m_gameObjects.push_back(m_sprite);
 }
 
 bool Game::Tick()
@@ -126,5 +128,9 @@ bool Game::Input()
 
 void Game::PlayTick()
 {
+	for (list<GameObject *>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end(); it++)
+	{
+		(*it)->Tick(m_GD);
+	}
 }
 

@@ -13,39 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Base">
+      <UniqueIdentifier>{0ca25e36-60a8-47fa-a117-40092352eb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base">
+      <UniqueIdentifier>{8ec98597-362e-4949-b008-990d3a9f0605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject">
+      <UniqueIdentifier>{9d9dd519-66e9-4921-810c-67b782a9b381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameobject">
+      <UniqueIdentifier>{d9732943-7559-4e84-b78b-571ebd9cb0da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DrawData.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GameData.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="Helper.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformGenerator.h">
+      <Filter>Header Files\Gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Header Files\Gameobject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="PlatformGenerator.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

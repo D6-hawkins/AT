@@ -15,6 +15,7 @@ class GameObject;
 struct DrawData;
 struct GameData;
 class Sprite;
+class PlatformGenerator;
 class Game
 {
 public:
@@ -39,6 +40,7 @@ private:
 	GameData* m_GD;
 	DrawData* m_DD;
 	Sprite* m_sprite;
+	PlatformGenerator* platGen;
 };
 
 

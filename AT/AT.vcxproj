@@ -128,11 +128,15 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Helper.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="PlatformGenerator.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="PlatformGenerator.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>

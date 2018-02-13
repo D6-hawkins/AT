@@ -22,8 +22,8 @@ Sprite::Sprite(const wchar_t* _filename, ID3D11Device* _GD) :m_pTextureRV(nullpt
 		((ID3D11Texture2D *)pResource)->GetDesc(&Desc);
 	}
 
-	m_origin = 0.5f*Vector2((float)100, (float)100);//around which rotation and scaing is done
-
+	m_origin = 0.5f*Vector2((float)100, (float)100);
+	m_col = Color(1, 1, 1);
 }
 
 Sprite::~Sprite()
@@ -37,16 +37,12 @@ Sprite::~Sprite()
 
 void Sprite::Tick(GameData* _GD)
 {
-	//spins!
-	m_rot += _GD->m_dt;
+
 }
 
 
 
 void Sprite::Draw(DrawData* _DD)
 {
-	//nullptr can be changed to a RECT* to define what area of this image to grab
-	//you can also add an extra value at the end to define layer depth
-	//right click and "Go to Defintion/Declaration" to see other version of this in DXTK
 	_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_col, m_rot, m_origin, m_scale, SpriteEffects_None);
 }

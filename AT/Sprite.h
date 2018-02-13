@@ -10,6 +10,7 @@ public:
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData* _DD);
+	ID3D11ShaderResourceView* getView() { return m_pTextureRV; };
 protected:
 	ID3D11ShaderResourceView* m_pTextureRV;
 
