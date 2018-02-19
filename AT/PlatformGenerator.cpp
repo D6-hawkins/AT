@@ -30,7 +30,7 @@ void PlatformGenerator::Generate(int platforms)
 	pushBack = true;
 	newPlat = new Platform(L"../AT/StartEnd.dds", _GameData);
 	int x = 40;//rand() % 500 + 20;
-	int y = 300;//rand() % 200 + 40;
+	int y = 400;//rand() % 200 + 40;
 	Vector2 pos = Vector2(x, y);
 	newPlat->SetPos(pos);
 	platVec.push_back(newPlat);
@@ -49,22 +49,36 @@ void PlatformGenerator::Generate(int platforms)
 		int C = 0;
 		if (i != 0)
 		{
-			C = i-1;
+			C = i;
 		}
 		ID3D11Resource *pResource;
 		D3D11_TEXTURE2D_DESC Desc;
 		platVec[C]->getView()->GetResource(&pResource);
 		((ID3D11Texture2D *)pResource)->GetDesc(&Desc);
-		int x = platVec[C]->GetPos().x + platVec[C]->GetScale().x + Desc.Width + 10;
+		int x = platVec[C]->GetPos().x + platVec[C]->GetScale().x + Desc.Width + 15;
 		int y = 0;
 		switch (randDirection)
 		{
 			case 1: //North
-				y = platVec[C]->GetPos().y + platVec[C]->GetScale().y + Desc.Height;
+				if (platVec[C]->GetPos().y + platVec[C]->GetScale().y + Desc.Height >= 700)
+				{
+					y = platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height;
+				}
+				else
+				{
+					y = platVec[C]->GetPos().y + platVec[C]->GetScale().y + Desc.Height;
+				}
 				//x = platVec[C]->GetPos().x;
 				break;
 			case 2: //South
-				y = platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height;
+				if (platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height <= 20)
+				{
+					y = platVec[C]->GetPos().y + platVec[C]->GetScale().y + Desc.Height;
+				}
+				else
+				{
+					y = platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height;
+				}
 				//x = platVec[C]->GetPos().x;
 				break;
 			//case 3: //East
