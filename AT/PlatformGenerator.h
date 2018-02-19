@@ -16,4 +16,5 @@ private:
 	Platform* newPlat;
 	ID3D11Device* _GameData;
 	int prevDirection = 0;
+	bool pushBack = true;
 };

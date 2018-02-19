@@ -1,6 +1,7 @@
 #include "PlatformGenerator.h"
 #include "Platform.h"
 #include <random>
+#include <iterator>
 PlatformGenerator::PlatformGenerator(const wchar_t* filename, int platform, ID3D11Device* _GD)
 {
 	PlatfileName = filename;
@@ -26,18 +27,25 @@ void PlatformGenerator::Draw(DrawData * _DD)
 
 void PlatformGenerator::Generate(int platforms)
 {
-	newPlat = new Platform(PlatfileName, _GameData);
-	int x = rand() % 500 + 20;
-	int y = rand() % 500 + 20;
+	pushBack = true;
+	newPlat = new Platform(L"../AT/StartEnd.dds", _GameData);
+	int x = 40;//rand() % 500 + 20;
+	int y = 300;//rand() % 200 + 40;
 	Vector2 pos = Vector2(x, y);
 	newPlat->SetPos(pos);
 	platVec.push_back(newPlat);
 	for (int i = 0; i != platforms; i++)
 	{
-		newPlat = new Platform(PlatfileName, _GameData);
-		int x = 0;
-		int y = 0;
-		int randDirection = rand() % 4 + 1;
+		if (i == platforms - 1)
+		{
+			newPlat = new Platform(L"../AT/StartEnd.dds", _GameData);
+		}
+		else 
+		{
+			newPlat = new Platform(PlatfileName, _GameData);
+		}
+
+		int randDirection = rand() % 2 + 1;
 		int C = 0;
 		if (i != 0)
 		{
@@ -47,24 +55,26 @@ void PlatformGenerator::Generate(int platforms)
 		D3D11_TEXTURE2D_DESC Desc;
 		platVec[C]->getView()->GetResource(&pResource);
 		((ID3D11Texture2D *)pResource)->GetDesc(&Desc);
+		int x = platVec[C]->GetPos().x + platVec[C]->GetScale().x + Desc.Width + 10;
+		int y = 0;
 		switch (randDirection)
 		{
 			case 1: //North
 				y = platVec[C]->GetPos().y + platVec[C]->GetScale().y + Desc.Height;
-				x = platVec[C]->GetPos().x;
+				//x = platVec[C]->GetPos().x;
 				break;
 			case 2: //South
-				y = platVec[C]->GetPos().y - platVec[C]->GetScale().y + Desc.Height;
-				x = platVec[C]->GetPos().x;
+				y = platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height;
+				//x = platVec[C]->GetPos().x;
 				break;
-			case 3: //East
-				y = platVec[C]->GetPos().y ;
-				x = platVec[C]->GetPos().x +platVec[C]->GetScale().x + Desc.Width;
-				break;
-			case 4: //West
-				y = platVec[C]->GetPos().y ;
-				x = platVec[C]->GetPos().x - -platVec[C]->GetScale().x + Desc.Width;
-				break;
+			//case 3: //East
+			//	y = platVec[C]->GetPos().y ;
+			//	x = platVec[C]->GetPos().x +platVec[C]->GetScale().x + Desc.Width;
+			//	break;
+			//case 4: //West
+			//	y = platVec[C]->GetPos().y ;
+			//	x = platVec[C]->GetPos().x - -platVec[C]->GetScale().x + Desc.Width;
+			//	break;
 
 		}
 		//if (x <= 20)
@@ -78,7 +88,27 @@ void PlatformGenerator::Generate(int platforms)
 		//int x = rand() % 1000 + 20;
 		//int y = rand() % 1000 + 20;
 		Vector2 pos = Vector2(x, y);
-		newPlat->SetPos(pos);
-		platVec.push_back(newPlat);
+		//for (std::vector<Platform*>::iterator it = platVec.begin(); it != platVec.end(); ++it)
+		//{
+		//	if (pos == (*it)->GetPos())
+		//	{
+		//		i--;
+		//		pushBack = false;
+		//	}
+		//}
+		//for (int j = 0; j <= platVec.size()-1; j++)
+		//{
+		//	if (pos == platVec[j]->GetPos())
+		//	{
+		//		i--;
+		//		pushBack = false;
+		//	}
+		//}
+		if (pushBack == true)
+		{
+			newPlat->SetPos(pos);
+			platVec.push_back(newPlat);
+		}
+
 	}
 }
