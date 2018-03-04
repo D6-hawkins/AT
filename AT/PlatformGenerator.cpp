@@ -2,6 +2,7 @@
 #include "Platform.h"
 #include <random>
 #include <iterator>
+#include "FileStore.h"
 PlatformGenerator::PlatformGenerator(const wchar_t* filename, int platform, ID3D11Device* _GD)
 {
 	PlatfileName = filename;
@@ -45,7 +46,7 @@ void PlatformGenerator::Generate(int platforms)
 			newPlat = new Platform(PlatfileName, _GameData);
 		}
 
-		int randDirection = rand() % 2 + 1;
+		int randDirection = rand() % 3 + 1;
 		int C = 0;
 		if (i != 0)
 		{
@@ -55,7 +56,7 @@ void PlatformGenerator::Generate(int platforms)
 		D3D11_TEXTURE2D_DESC Desc;
 		platVec[C]->getView()->GetResource(&pResource);
 		((ID3D11Texture2D *)pResource)->GetDesc(&Desc);
-		int x = platVec[C]->GetPos().x + platVec[C]->GetScale().x + Desc.Width + 15;
+		int x = platVec[C]->GetPos().x + platVec[C]->GetScale().x + Desc.Width;
 		int y = 0;
 		switch (randDirection)
 		{
@@ -80,6 +81,9 @@ void PlatformGenerator::Generate(int platforms)
 					y = platVec[C]->GetPos().y - platVec[C]->GetScale().y - Desc.Height;
 				}
 				//x = platVec[C]->GetPos().x;
+				break;
+			case 3:
+				y = platVec[C]->GetPos().y;
 				break;
 			//case 3: //East
 			//	y = platVec[C]->GetPos().y ;
@@ -123,6 +127,6 @@ void PlatformGenerator::Generate(int platforms)
 			newPlat->SetPos(pos);
 			platVec.push_back(newPlat);
 		}
-
 	}
+	FileStore* fileStoreGO = new FileStore(platVec);
 }
