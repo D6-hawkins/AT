@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DrawData.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="FileStore.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="FileStore.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />

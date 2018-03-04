@@ -57,6 +57,9 @@
     <ClInclude Include="FileStore.h">
       <Filter>Header Files\Gameobject</Filter>
     </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Header Files\Gameobject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -75,6 +78,9 @@
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="FileStore.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
