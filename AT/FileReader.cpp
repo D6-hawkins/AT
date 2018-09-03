@@ -16,7 +16,7 @@ void FileReader::GenerateVector(string _filename)
 	{
 		while (getline (readFile, line))
 		{
-
+			int i = 0; //Pull request test
 		}
 	}
 }
